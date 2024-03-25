@@ -1,13 +1,14 @@
 package quests;
 
+import quests.rewards.Reward;
+
 // Builder Pattern - Piotr Wróbel
 public class Quest {
 
     private String name;
     private String description;
     private String difficulty;
-    private int experience;
-    private int gold;
+    private Reward reward;
 
     private Quest() {}
 
@@ -16,8 +17,7 @@ public class Quest {
         this.name = quest.name;
         this.description = quest.description;
         this.difficulty = quest.difficulty;
-        this.experience = quest.experience;
-        this.gold = quest.gold;
+        this.reward = quest.reward;
     }
 
     public String getName() {
@@ -32,20 +32,15 @@ public class Quest {
         return difficulty;
     }
 
-    public int getExperience() {
-        return experience;
-    }
-
-    public int getGold() {
-        return gold;
+    public Reward getReward() {
+        return reward;
     }
 
     public static class QuestBuilder {
         private String name;
         private String description;
         private String difficulty;
-        private int experience;
-        private int gold;
+        private Reward reward;
 
         // Setters for quest attributes
         public QuestBuilder name(String name) {
@@ -63,13 +58,8 @@ public class Quest {
             return this;
         }
 
-        public QuestBuilder reward(int experience) {
-            this.experience = experience;
-            return this;
-        }
-
-        public QuestBuilder gold(int gold) {
-            this.gold = gold;
+        public QuestBuilder reward(Reward reward) {
+            this.reward = reward;
             return this;
         }
 
