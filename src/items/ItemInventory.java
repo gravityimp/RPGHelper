@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 // Composite - Yurii Tyshchenko
-public class ItemInventory {
+public class ItemInventory implements Item {
     private List<Item> items = new ArrayList<>();
     private int size = 1;
 
@@ -23,5 +23,20 @@ public class ItemInventory {
 
     public void removeItem(Item item) {
         items.remove(item);
+    }
+
+    @Override
+    public void use() {
+
+    }
+
+    @Override
+    public void display() {
+
+    }
+
+    @Override
+    public Item clone() {
+        return null;
     }
 }
