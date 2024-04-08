@@ -17,6 +17,11 @@ public class EntityAdapter implements Entity {
     public double getDamage() {
         return entity.getDamage();
     }
+
+    @Override
+    public void takeDamage(double damage) {
+        return;
+    }
 }
 
 // Adapter end - week 3

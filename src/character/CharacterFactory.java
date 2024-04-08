@@ -3,7 +3,7 @@ package character;
 import character.base.Character;
 
 // Simple Factory - (Piotr Wróbel)
-class CharacterFactory {
+public class CharacterFactory {
 
     private CharacterFactory() {}
 
