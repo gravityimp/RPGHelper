@@ -3,6 +3,7 @@ package character.base;
 import adapters.Entity;
 import character.CharacterClass;
 import character.CharacterType;
+import enemies.Enemy;
 import items.ItemInventory;
 
 public class Character implements Entity {
@@ -37,8 +38,24 @@ public class Character implements Entity {
         return health;
     }
 
+    public void setHealth(double health) {
+        this.health = health;
+    }
+
+    public void heal(double amount) {
+        this.health += amount;
+    }
+
     public double getDamage() {
         return damage;
+    }
+
+    public void attack(Enemy enemy) {
+        enemy.takeDamage(this.damage);
+    }
+
+    public void takeDamage(double damage) {
+        this.health -= damage;
     }
 
     public CharacterClass getCharacterClass() {

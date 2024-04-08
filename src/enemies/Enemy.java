@@ -19,7 +19,15 @@ public abstract class Enemy implements Entity {
         return health;
     }
 
+    public void setHealth(double health) {
+        this.health = health;
+    }
+
     public double getDamage() {
         return damage;
+    }
+
+    public void takeDamage(double damage) {
+        this.health -= damage;
     }
 }
