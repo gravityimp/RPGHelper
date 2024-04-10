@@ -2,6 +2,7 @@ package command;
 
 import character.base.Character;
 
+// Command - Yurii Tyshchenko
 public class HealCommand implements CharacterCommand {
     private double amount;
     private double previousHealth;
@@ -29,3 +30,4 @@ public class HealCommand implements CharacterCommand {
         System.out.println("Healing backup created! [" + previousHealth + " HP]");
     }
 }
+// Command end - week 5

@@ -3,6 +3,7 @@ package command;
 import character.base.Character;
 import enemies.Enemy;
 
+// Command - Yurii Tyshchenko
 public class AttackCommand implements CharacterCommand {
     private Enemy target;
     private double previousTargetHealth;
@@ -30,3 +31,4 @@ public class AttackCommand implements CharacterCommand {
         System.out.println("Backup attack command!");
     }
 }
+// Command end - week 5

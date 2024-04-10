@@ -5,6 +5,7 @@ import enemies.MonsterEnemy;
 
 import java.util.List;
 
+// Iterator - Yurii Tyshchenko
 public class MonsterEnemyIterator implements EnemyIterator {
     private List<MonsterEnemy> monsterEnemies;
     private int currentIndex;
@@ -32,3 +33,4 @@ public class MonsterEnemyIterator implements EnemyIterator {
         currentIndex = 0;
     }
 }
+// Iterator end - week 5

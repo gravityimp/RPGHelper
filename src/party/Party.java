@@ -3,6 +3,7 @@ package party;
 import character.CharacterClass;
 import character.CharacterType;
 import character.base.Character;
+import mediators.CharacterCommandMediator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +14,7 @@ public class Party {
 
     public void addMember(double health, double damage, int inventorySize, String name, CharacterClass profession, String backstory) {
         CharacterType type = PartyFactory.getCharacterType(name, profession, backstory);
-        Character member = new Character(type, health, damage, inventorySize);
+        Character member = new Character(type, health, damage, inventorySize, new CharacterCommandMediator());
         members.add(member);
     }
 

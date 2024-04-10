@@ -5,6 +5,7 @@ import enemies.HumanEnemy;
 
 import java.util.List;
 
+// Iterator - Yurii Tyshchenko
 public class HumanEnemyIterator implements EnemyIterator {
     private List<HumanEnemy> humanEnemies;
     private int currentIndex;
@@ -32,3 +33,4 @@ public class HumanEnemyIterator implements EnemyIterator {
         currentIndex = 0;
     }
 }
+// Iterator end - week 5

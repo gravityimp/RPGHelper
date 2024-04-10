@@ -7,6 +7,11 @@ import command.HealCommand;
 import enemies.Enemy;
 import enemies.HumanEnemy;
 import enemies.MonsterEnemy;
+import interpreters.DiceRollExpression;
+import interpreters.MaxExpression;
+import interpreters.AndExpression;
+import interpreters.RollExpression;
+import interpreters.RollInterpreter;
 import iterators.HumanEnemyIterator;
 import iterators.MonsterEnemyIterator;
 
@@ -52,5 +57,20 @@ public class Main {
             System.out.println("Monster Enemy with [" + monsterEnemy.getHealth() + " HP] and [" + monsterEnemy.getDamage() + " DMG]!");
         }
         // Iterator implementation - end
+
+        // Interpreter implementation - begin
+        RollInterpreter interpreter = new RollInterpreter();
+
+        RollExpression rollD6_1 = new DiceRollExpression(6);
+        RollExpression rollD6_2 = new DiceRollExpression(6);
+        AndExpression roll2D6 = new AndExpression(rollD6_1, rollD6_2);
+
+        System.out.println("2d6: " + interpreter.interpret(roll2D6));
+        RollExpression rollD20_1 = new DiceRollExpression(20);
+        RollExpression rollD20_2 = new DiceRollExpression(20);
+        MaxExpression rollMaxD6 = new MaxExpression(rollD20_1, rollD20_2);
+
+        System.out.println("Max of d20 rolls: " + interpreter.interpret(rollMaxD6));
+        // Interpreter implementation - end
     }
 }

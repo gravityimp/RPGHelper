@@ -2,6 +2,7 @@ package iterators;
 
 import enemies.Enemy;
 
+// Iterator - Yurii Tyshchenko
 public interface EnemyIterator {
     boolean hasNext();
 
@@ -9,3 +10,4 @@ public interface EnemyIterator {
 
     void reset();
 }
+// Iterator end - week 5
