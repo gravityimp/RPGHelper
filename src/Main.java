@@ -40,6 +40,7 @@ public class Main {
             add(new HumanEnemy(4, 10));
         }});
 
+        // Iterator implementation - begin
         MonsterEnemyIterator monsterEnemyIterator = new MonsterEnemyIterator(new ArrayList<MonsterEnemy>() {{
             add(new MonsterEnemy(9, 4));
             add(new MonsterEnemy(7, 5));
@@ -50,5 +51,6 @@ public class Main {
             MonsterEnemy monsterEnemy = (MonsterEnemy) monsterEnemyIterator.getNext();
             System.out.println("Monster Enemy with [" + monsterEnemy.getHealth() + " HP] and [" + monsterEnemy.getDamage() + " DMG]!");
         }
+        // Iterator implementation - end
     }
 }
