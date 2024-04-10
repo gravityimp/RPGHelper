@@ -6,10 +6,9 @@ import character.CharacterType;
 import command.CharacterCommand;
 import enemies.Enemy;
 import items.ItemInventory;
-import mediators.CharacterCommandMediator;
+import mementos.CharacterMemento;
 
 public class Character implements Entity {
-
     private CharacterClass characterClass;
     private double health;
     private double damage;
@@ -17,25 +16,25 @@ public class Character implements Entity {
     private CharacterType type;
 
     private ItemInventory inventory;
-    private CharacterCommandMediator mediator;
+    private CharacterMemento memento;
 
-    public Character(CharacterClass profession, double health, double damage, int inventorySize, CharacterCommandMediator mediator) {
+    public Character(CharacterClass profession, double health, double damage, int inventorySize, CharacterMemento memento) {
         this.type = new CharacterType("", profession, "");
         this.health = health;
         this.damage = damage;
 
         this.inventory = new ItemInventory(inventorySize);
-        this.mediator = mediator;
+        this.memento = memento;
     }
 
     // Flyweight - Piotr Wróbel
-    public Character(CharacterType type, double health, double damage, int inventorySize, CharacterCommandMediator mediator) {
+    public Character(CharacterType type, double health, double damage, int inventorySize, CharacterMemento memento) {
         this.type = type;
         this.health = health;
         this.damage = damage;
 
         this.inventory = new ItemInventory(inventorySize);
-        this.mediator = mediator;
+        this.memento = memento;
     }
     // Flyweight end - week 4
 
@@ -68,10 +67,10 @@ public class Character implements Entity {
     }
 
     public void executeCommand(CharacterCommand command) {
-        mediator.executeCommand(command, this);
+        memento.executeCommand(command, this);
     }
 
     public void undoLastCommand() {
-        mediator.undoLastCommand(this);
+        memento.undoLastCommand(this);
     }
 }

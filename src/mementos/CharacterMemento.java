@@ -1,12 +1,12 @@
-package mediators;
+package mementos;
 
 import command.CharacterCommand;
 import character.base.Character;
 
 import java.util.Stack;
 
-// Mediator - Yurii Tyshchenko
-public class CharacterCommandMediator {
+// Memento - Yurii Tyshchenko
+public class CharacterMemento {
     private Stack<CharacterCommand> commandHistory = new Stack<>();
     private Stack<CharacterCommand> undoneCommands = new Stack<>();
 
@@ -36,4 +36,4 @@ public class CharacterCommandMediator {
         // Implement backup logic if needed
     }
 }
-// Mediator end - week 5
+// Memento end - week 5
