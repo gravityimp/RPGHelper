@@ -1,17 +1,23 @@
 package items.base;
 
 import items.ItemData;
+import strategies.ArmorUsageStrategy;
+import strategies.ItemUsageStrategy;
 
-public class Armor implements Item{
+public class Armor implements Item {
 
     private String name;
     private Double armor;
     private Double health;
 
+    private ItemUsageStrategy usageStrategy;
+
     public Armor(ItemData data) {
         this.name = data.getName();
         this.armor = data.getArmor();
         this.health = data.getHealth();
+
+        this.usageStrategy = new ArmorUsageStrategy(this);
     }
 
     // Prototype Pattern Implementation - (Yurii Tyshchenko)
@@ -19,6 +25,8 @@ public class Armor implements Item{
         this.name = instance.getName();
         this.armor = instance.getArmor();
         this.health = instance.getHealth();
+
+        this.usageStrategy = new ArmorUsageStrategy(this);
     }
 
     @Override
@@ -29,7 +37,16 @@ public class Armor implements Item{
 
     @Override
     public void use() {
-        System.out.println("Equipped armor " + this.name + "!");
+        if (usageStrategy != null) {
+            usageStrategy.use();
+        } else {
+            System.out.println("No usage strategy defined for this armor.");
+        }
+    }
+
+    @Override
+    public void setUsageStrategy(ItemUsageStrategy usageStrategy) {
+
     }
 
     @Override
