@@ -1,6 +1,8 @@
 package quests;
 
 import quests.rewards.Reward;
+import states.QuestState;
+import states.quests.NotTakenState;
 
 // Builder Pattern - Piotr Wróbel
 public class Quest {
@@ -10,6 +12,8 @@ public class Quest {
     private String difficulty;
     private Reward reward;
 
+    private QuestState state;
+
     private Quest() {}
 
     private Quest(QuestBuilder builder) {
@@ -18,6 +22,8 @@ public class Quest {
         this.description = quest.description;
         this.difficulty = quest.difficulty;
         this.reward = quest.reward;
+
+        this.state = new NotTakenState(this);
     }
 
     public String getName() {
@@ -34,6 +40,26 @@ public class Quest {
 
     public Reward getReward() {
         return reward;
+    }
+
+    public QuestState getState() {
+        return state;
+    }
+
+    public void setState(QuestState state) {
+        this.state = state;
+    }
+
+    public void start() {
+        state.onStart();
+    }
+
+    public void complete() {
+        state.onComplete();
+    }
+
+    public void abandon() {
+        state.onAbandon();
     }
 
     public static class QuestBuilder {
