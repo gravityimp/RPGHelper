@@ -12,6 +12,8 @@ public class Character implements Entity {
     private CharacterClass characterClass;
     private double health;
     private double damage;
+    private int level;
+    private double experiencePoints;
 
     private CharacterType type;
 
@@ -72,5 +74,26 @@ public class Character implements Entity {
 
     public void undoLastCommand() {
         memento.undoLastCommand(this);
+    }
+
+
+    public double getExperiencePoints() {
+        return experiencePoints;
+    }
+
+    public void setExperiencePoints(double experiencePoints) {
+        this.experiencePoints = experiencePoints;
+    }
+
+    public void addExperiencePoints(double experiencePoints) {
+        this.experiencePoints += experiencePoints;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
     }
 }

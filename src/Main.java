@@ -14,6 +14,9 @@ import interpreters.RollExpression;
 import interpreters.RollInterpreter;
 import iterators.HumanEnemyIterator;
 import iterators.MonsterEnemyIterator;
+import mementos.CharacterMemento;
+import templates.LevelingSystem;
+import templates.SimpleLevelingSystem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,5 +75,15 @@ public class Main {
 
         System.out.println("Max of d20 rolls: " + interpreter.interpret(rollMaxD6));
         // Interpreter implementation - end
+
+
+        // Template Method Pattern implementation - begin
+        Character character = new Character(CharacterClass.WARRIOR, 12, 4, 9, new CharacterMemento());
+        LevelingSystem levelingSystem = new SimpleLevelingSystem();
+
+        for (int i = 0; i < 5; i++) {
+            levelingSystem.levelUp(character);
+        }
+        // Template Method Pattern implementation - end
     }
 }
