@@ -39,13 +39,13 @@ public class Main {
 
         System.out.println("\n=======================\n");
 
+        // Iterator implementation - begin
         HumanEnemyIterator humanEnemyIterator = new HumanEnemyIterator(new ArrayList<HumanEnemy>() {{
             add(new HumanEnemy(10, 2));
             add(new HumanEnemy(8, 3));
             add(new HumanEnemy(4, 10));
         }});
 
-        // Iterator implementation - begin
         MonsterEnemyIterator monsterEnemyIterator = new MonsterEnemyIterator(new ArrayList<MonsterEnemy>() {{
             add(new MonsterEnemy(9, 4));
             add(new MonsterEnemy(7, 5));

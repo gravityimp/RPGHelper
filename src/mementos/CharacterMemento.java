@@ -13,14 +13,14 @@ public class CharacterMemento {
     public void executeCommand(CharacterCommand command, Character character) {
         command.execute(character);
         commandHistory.push(command);
-        undoneCommands.clear(); // Clear undone commands stack when a new command is executed
+        undoneCommands.clear();
     }
 
     public void undoLastCommand(Character character) {
         if (!commandHistory.isEmpty()) {
             CharacterCommand lastCommand = commandHistory.pop();
             lastCommand.undo(character);
-            undoneCommands.push(lastCommand); // Move the undone command to the undone stack
+            undoneCommands.push(lastCommand);
         }
     }
 
@@ -28,12 +28,12 @@ public class CharacterMemento {
         if (!undoneCommands.isEmpty()) {
             CharacterCommand lastUndoneCommand = undoneCommands.pop();
             lastUndoneCommand.execute(character);
-            commandHistory.push(lastUndoneCommand); // Move the redone command back to the command history
+            commandHistory.push(lastUndoneCommand);
         }
     }
 
     public void backup(CharacterCommand command, Character character) {
-        // Implement backup logic if needed
+        // Backup logic
     }
 }
 // Memento end - week 5
