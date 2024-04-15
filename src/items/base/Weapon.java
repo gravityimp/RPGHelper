@@ -62,4 +62,8 @@ public class Weapon implements Item {
     public void setName(String name) {
         this.name = name;
     }
+
+    public Double getDamage() {
+        return damage;
+    }
 }

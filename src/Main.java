@@ -1,3 +1,4 @@
+import board.*;
 import character.CharacterClass;
 import character.CharacterFactory;
 import character.base.Character;
@@ -12,6 +13,9 @@ import interpreters.MaxExpression;
 import interpreters.AndExpression;
 import interpreters.RollExpression;
 import interpreters.RollInterpreter;
+import items.ItemData;
+import items.base.Armor;
+import items.base.Weapon;
 import iterators.HumanEnemyIterator;
 import iterators.MonsterEnemyIterator;
 import mementos.CharacterMemento;
@@ -76,7 +80,6 @@ public class Main {
         System.out.println("Max of d20 rolls: " + interpreter.interpret(rollMaxD6));
         // Interpreter implementation - end
 
-
         // Template Method Pattern implementation - begin
         Character character = new Character(CharacterClass.WARRIOR, 12, 4, 9, new CharacterMemento());
         LevelingSystem levelingSystem = new SimpleLevelingSystem();
@@ -85,5 +88,23 @@ public class Main {
             levelingSystem.levelUp(character);
         }
         // Template Method Pattern implementation - end
+
+
+        // Visitor implementation - begin
+        CharacterSprite charSprite = new CharacterSprite(0, 0, 0, "images/char1.png", myCharacter);
+        charSprite.move(1, 2);
+
+        EnemySprite enemySprite = new EnemySprite(1, 10, 10, "images/guard.png", myEnemy);
+        enemySprite.move(-2, -1);
+
+        ItemData.ItemDataBuilder itemBuilder = new ItemData.ItemDataBuilder();
+        itemBuilder = itemBuilder.name("test").armor(2).health(3).damage(7);
+        ItemData i = itemBuilder.build();
+        ArmorSprite armorSprite = new ArmorSprite(2, 1, 2, "images/chestplate.png", new Armor(i));
+        WeaponSprite weaponSprite = new WeaponSprite(3, 1, 2, "images/sword.png", new Weapon(i));
+
+        XMLExportVisitor exportVisitor = new XMLExportVisitor();
+        System.out.println(exportVisitor.export(charSprite, enemySprite, armorSprite, weaponSprite));
+        // Visitor implementation - end
     }
 }
