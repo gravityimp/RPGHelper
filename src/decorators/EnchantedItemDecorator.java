@@ -1,11 +1,15 @@
 package decorators;
 
 import items.base.Item;
+import strategies.ItemUsageStrategy;
+import strategies.WeaponUsageStrategy;
 
 // Decorator Pattern - Yurii Tyshchenko
 public class EnchantedItemDecorator implements Item {
     private Item item;
     private String enchantment;
+
+    private ItemUsageStrategy strategy;
 
     public EnchantedItemDecorator(Item item, String enchantment) {
         this.item = item;
@@ -16,6 +20,11 @@ public class EnchantedItemDecorator implements Item {
     public void use() {
         item.use();
         System.out.println("Applying enchantment: " + enchantment);
+    }
+
+    @Override
+    public void setUsageStrategy(ItemUsageStrategy usageStrategy) {
+        item.setUsageStrategy(usageStrategy);
     }
 
     @Override

@@ -18,11 +18,9 @@ public class EnemyHitLogListener implements EventListener {
 
     @Override
     public void update(String eventType, String... args) {
-        if (args.length >= 2) {
-            String damage = args[1];
+        if (args.length >= 1) {
+            String damage = args[0];
             System.out.println(enemy.toString() + " was hit by " + damage + "! File: " + file.getName());
-        } else {
-            System.out.println("Invalid arguments.");
         }
     }
 }

@@ -19,6 +19,10 @@ import items.base.Weapon;
 import iterators.HumanEnemyIterator;
 import iterators.MonsterEnemyIterator;
 import mementos.CharacterMemento;
+import quests.Quest;
+import quests.rewards.BasicReward;
+import quests.rewards.Reward;
+import states.quests.InProgressState;
 import templates.LevelingSystem;
 import templates.SimpleLevelingSystem;
 
@@ -80,6 +84,19 @@ public class Main {
         System.out.println("Max of d20 rolls: " + interpreter.interpret(rollMaxD6));
         // Interpreter implementation - end
 
+        // Observer Pattern implementation - begin
+        Enemy e1 = new HumanEnemy(10, 2);
+        AttackCommand ac = new AttackCommand(e1);
+
+        ac.execute(myCharacter);
+        // Observer Pattern implementation - end
+
+        // State Pattern implementation - begin
+        Quest q = new Quest.QuestBuilder().name("Quest 1").description("This is a sample quest!").difficulty("Hard").reward(new BasicReward(100, 10)).build();
+        q.start();
+        q.abandon();
+        // State Pattern implementation - end
+
         // Template Method Pattern implementation - begin
         Character character = new Character(CharacterClass.WARRIOR, 12, 4, 9, new CharacterMemento());
         LevelingSystem levelingSystem = new SimpleLevelingSystem();
@@ -88,7 +105,6 @@ public class Main {
             levelingSystem.levelUp(character);
         }
         // Template Method Pattern implementation - end
-
 
         // Visitor implementation - begin
         CharacterSprite charSprite = new CharacterSprite(0, 0, 0, "images/char1.png", myCharacter);

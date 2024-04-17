@@ -1,6 +1,7 @@
 package items;
 
 import items.base.Item;
+import strategies.ItemUsageStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,9 @@ public class ItemInventory implements Item {
             item.use();
         }
     }
+
+    @Override
+    public void setUsageStrategy(ItemUsageStrategy usageStrategy) {  }
 
     @Override
     public void display() {

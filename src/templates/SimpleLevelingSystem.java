@@ -8,8 +8,9 @@ public class SimpleLevelingSystem extends LevelingSystem {
 
     @Override
     protected void gainExperiencePoints(Character character) {
-        character.addExperiencePoints(10);
-        System.out.println(character.getCharacterClass() + " gains 10 experience points.");
+        int points = 30;
+        character.addExperiencePoints(points);
+        System.out.println(character.getCharacterClass() + " gains " + points + " experience points.");
     }
 
     @Override
@@ -20,7 +21,7 @@ public class SimpleLevelingSystem extends LevelingSystem {
     @Override
     protected void levelUpCharacter(Character character) {
         character.setLevel(character.getLevel() + 1);
-        character.setExperiencePoints(0);
+        character.setExperiencePoints(character.getExperiencePoints() - EXPERIENCE_THRESHOLD);
         character.setHealth(character.getHealth() + LEVEL_UP_BONUS);
         System.out.println(character.getCharacterClass() + " levels up to level " + character.getLevel() + "!");
     }

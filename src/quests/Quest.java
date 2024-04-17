@@ -17,11 +17,10 @@ public class Quest {
     private Quest() {}
 
     private Quest(QuestBuilder builder) {
-        Quest quest = builder.build();
-        this.name = quest.name;
-        this.description = quest.description;
-        this.difficulty = quest.difficulty;
-        this.reward = quest.reward;
+        this.name = builder.name;
+        this.description = builder.description;
+        this.difficulty = builder.difficulty;
+        this.reward = builder.reward;
 
         this.state = new NotTakenState(this);
     }
@@ -91,7 +90,6 @@ public class Quest {
 
         // Method to build a Quest instance
         public Quest build() {
-            // Validate required fields
             if (name == null || description == null) {
                 throw new IllegalStateException("Quest name and description must be set");
             }
