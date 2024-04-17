@@ -56,14 +56,14 @@ public class XMLExportVisitor implements Visitor {
 
     public String visitWeapon(WeaponSprite w) {
         Weapon weapon = w.getWeapon();
-        return "<armor>" + "\n" +
+        return "<weapon>" + "\n" +
                 "    <id>" + w.getId() + "</id>" + "\n" +
                 "    <x>" + w.getX() + "</x>" + "\n" +
                 "    <y>" + w.getY() + "</y>" + "\n" +
                 "    <img>" + w.getFilepath() + "</img>" + "\n" +
                 "    <name>" + weapon.getName() + "</name>" + "\n" +
                 "    <damage>" + weapon.getDamage() + "</damage>" + "\n" +
-                "</armor>";
+                "</weapon>";
     }
 }
 // Visitor end - week 6
