@@ -4,6 +4,7 @@ import enemies.Enemy;
 import obrservers.EventListener;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 
 public class EnemyCreatedLogListener implements EventListener {

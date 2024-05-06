@@ -74,12 +74,12 @@ public class Main {
 
         RollExpression rollD6_1 = new DiceRollExpression(6);
         RollExpression rollD6_2 = new DiceRollExpression(6);
-        AndExpression roll2D6 = new AndExpression(rollD6_1, rollD6_2);
+        RollExpression roll2D6 = new AndExpression(rollD6_1, rollD6_2);
 
         System.out.println("2d6: " + interpreter.interpret(roll2D6));
         RollExpression rollD20_1 = new DiceRollExpression(20);
         RollExpression rollD20_2 = new DiceRollExpression(20);
-        MaxExpression rollMaxD6 = new MaxExpression(rollD20_1, rollD20_2);
+        RollExpression rollMaxD6 = new MaxExpression(rollD20_1, rollD20_2);
 
         System.out.println("Max of d20 rolls: " + interpreter.interpret(rollMaxD6));
         // Interpreter implementation - end

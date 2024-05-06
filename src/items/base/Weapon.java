@@ -42,7 +42,7 @@ public class Weapon implements Item {
 
     @Override
     public void setUsageStrategy(ItemUsageStrategy usageStrategy) {
-
+        this.usageStrategy = usageStrategy;
     }
 
     @Override

@@ -3,26 +3,33 @@ package templates;
 import character.base.Character;
 
 public class SimpleLevelingSystem extends LevelingSystem {
-    private static final double EXPERIENCE_THRESHOLD = 100.0;
-    private static final int LEVEL_UP_BONUS = 10;
+   private int levelUpBonus = 10;
 
     @Override
-    protected void gainExperiencePoints(Character character) {
-        int points = 30;
-        character.addExperiencePoints(points);
-        System.out.println(character.getCharacterClass() + " gains " + points + " experience points.");
+    protected void gainExperiencePoints(Character character, int experiencePoints) {
+        character.addExperiencePoints(experiencePoints);
+        System.out.println(character.getCharacterClass() + " gains " + experiencePoints + " experience points.");
     }
 
     @Override
     protected boolean canLevelUp(Character character) {
-        return character.getExperiencePoints() >= EXPERIENCE_THRESHOLD;
+        return character.getExperiencePoints() >= getRequiredExperience(character);
     }
 
     @Override
     protected void levelUpCharacter(Character character) {
         character.setLevel(character.getLevel() + 1);
-        character.setExperiencePoints(character.getExperiencePoints() - EXPERIENCE_THRESHOLD);
-        character.setHealth(character.getHealth() + LEVEL_UP_BONUS);
+        character.setExperiencePoints(character.getExperiencePoints() - getRequiredExperience(character));
+        character.setHealth(character.getHealth() + levelUpBonus);
         System.out.println(character.getCharacterClass() + " levels up to level " + character.getLevel() + "!");
+    }
+
+    @Override
+    protected int getRequiredExperience(Character character) {
+        return 20 + (character.getLevel() * 24);
+    }
+
+    public void setLevelUpBonus(int levelUpBonus) {
+        this.levelUpBonus = levelUpBonus;
     }
 }
