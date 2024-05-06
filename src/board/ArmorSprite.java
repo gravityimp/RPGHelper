@@ -2,6 +2,8 @@ package board;
 
 import items.base.Armor;
 
+import static board.BoardConstants.*;
+
 // Visitor - Piotr Wróbel
 public class ArmorSprite implements Sprite {
     private int id;
@@ -25,6 +27,10 @@ public class ArmorSprite implements Sprite {
 
     @Override
     public void move(int x, int y) {
+        if (this.x + x >= BOARD_MIN_WIDTH && this.x + x <= BOARD_MAX_WIDTH)
+            this.x += x;
+        if (this.y + y >= BOARD_MIN_HEIGHT && this.y + y <= BOARD_MAX_HEIGHT)
+            this.y += y;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package board;
 
 import items.base.Weapon;
+import static board.BoardConstants.*;
 
 // Visitor - Piotr Wróbel
 public class WeaponSprite implements Sprite {
@@ -25,9 +26,9 @@ public class WeaponSprite implements Sprite {
 
     @Override
     public void move(int x, int y) {
-        if (this.x + x >= 0 && this.x + x <= 100)
+        if (this.x + x >= BOARD_MIN_WIDTH && this.x + x <= BOARD_MAX_WIDTH)
             this.x += x;
-        if (this.y + y >= 0 && this.y + y <= 100)
+        if (this.y + y >= BOARD_MIN_HEIGHT && this.y + y <= BOARD_MAX_HEIGHT)
             this.y += y;
     }
 
