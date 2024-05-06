@@ -28,6 +28,7 @@ import templates.SimpleLevelingSystem;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
@@ -102,7 +103,7 @@ public class Main {
         LevelingSystem levelingSystem = new SimpleLevelingSystem();
 
         for (int i = 0; i < 5; i++) {
-            levelingSystem.levelUp(character);
+            levelingSystem.levelUp(character, new Random().nextInt(50 + 1 - 15) + 15);
         }
         // Template Method Pattern implementation - end
 
