@@ -37,10 +37,14 @@ public class Armor implements Item {
 
     @Override
     public void use() {
-        if (usageStrategy != null) {
+        try {
+            if(usageStrategy == null)
+                throw new Exception("No usage strategy defined for this armor.");
+
             usageStrategy.use();
-        } else {
-            System.out.println("No usage strategy defined for this armor.");
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 
