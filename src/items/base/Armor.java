@@ -55,13 +55,9 @@ public class Armor implements Item {
 
     @Override
     public void display() {
-        System.out.println("=======");
-        System.out.println("Name: " + this.name);
-        System.out.println("ARMOR ITEM");
-        System.out.println("-------");
+        System.out.println("Armor name: " + this.name);
         System.out.println("Armor: " + this.armor);
         System.out.println("Health: " + this.health);
-        System.out.println("=======");
     }
 
     public String getName() {

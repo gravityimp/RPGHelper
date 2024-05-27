@@ -5,6 +5,8 @@ import character.base.Character;
 import command.AttackCommand;
 import command.CharacterCommand;
 import command.HealCommand;
+import functions.CharacterStatsModifier;
+import functions.RandomItemGenerator;
 import enemies.Enemy;
 import enemies.HumanEnemy;
 import enemies.MonsterEnemy;
@@ -21,14 +23,10 @@ import iterators.MonsterEnemyIterator;
 import mementos.CharacterMemento;
 import quests.Quest;
 import quests.rewards.BasicReward;
-import quests.rewards.Reward;
-import states.quests.InProgressState;
 import templates.LevelingSystem;
 import templates.SimpleLevelingSystem;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -114,14 +112,67 @@ public class Main {
         EnemySprite enemySprite = new EnemySprite(1, 10, 10, "images/guard.png", myEnemy);
         enemySprite.move(-2, -1);
 
-        ItemData.ItemDataBuilder itemBuilder = new ItemData.ItemDataBuilder();
-        itemBuilder = itemBuilder.name("test").armor(2).health(3).damage(7);
-        ItemData i = itemBuilder.build();
+        ItemData i = (new ItemData.ItemDataBuilder()).name("test").armor(2).health(3).damage(7).build();
         ArmorSprite armorSprite = new ArmorSprite(2, 1, 2, "images/chestplate.png", new Armor(i));
         WeaponSprite weaponSprite = new WeaponSprite(3, 1, 2, "images/sword.png", new Weapon(i));
 
         XMLExportVisitor exportVisitor = new XMLExportVisitor();
         System.out.println(exportVisitor.export(charSprite, enemySprite, armorSprite, weaponSprite));
         // Visitor implementation - end
+
+        RandomItemGenerator<Armor> armorGenerator = () -> {
+            Random RANDOM = new Random();
+            ItemData itemData = (new ItemData.ItemDataBuilder())
+                    .name("Armor " + RANDOM.nextInt(100))
+                    .armor(RANDOM.nextDouble() * 30)
+                    .build();
+            return new Armor(itemData);
+        };
+
+        RandomItemGenerator<Weapon> weaponGenerator = () -> {
+            Random RANDOM = new Random();
+            ItemData itemData = (new ItemData.ItemDataBuilder())
+                    .name("Weapon " + RANDOM.nextInt(100))
+                    .damage(RANDOM.nextDouble() * 50)
+                    .build();
+            return new Weapon(itemData);
+        };
+
+        Map<String, Armor> armorMap = new HashMap<>();
+        List<Weapon> weaponList = new ArrayList<>();
+
+        for (int it = 0; it < 10; it++) {
+            armorMap.put(it + ". armor in inventory", armorGenerator.generateItem());
+            weaponList.add(weaponGenerator.generateItem());
+        }
+
+        armorMap.forEach((key, armor) -> {
+            System.out.println(key + ":");
+            armor.display();
+            System.out.println("============");
+        });
+
+        weaponList
+                .stream()
+                .filter(weapon -> weapon.getDamage() > 30)
+                .forEach(weapon -> {
+                    weapon.display();
+                    System.out.println("============");
+                });
+
+        Character modifiedCharacter = new Character(CharacterClass.WARRIOR, 12, 4, 9, new CharacterMemento());
+        CharacterStatsModifier<Weapon> equipWeapon = (target, item) -> {
+            double newDamage = target.getDamage() + item.getDamage();
+            target.setDamage(newDamage);
+        };
+
+        Weapon modifyingWeapon = new Weapon(
+                (new ItemData.ItemDataBuilder()).name("test").armor(2).health(3).damage(7).build()
+        );
+        equipWeapon.updateCharacter(modifiedCharacter, modifyingWeapon);
+
+        System.out.println("============");
+        System.out.println("Modified character:");
+        modifiedCharacter.display();
     }
 }

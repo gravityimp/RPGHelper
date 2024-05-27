@@ -8,4 +8,5 @@ public interface Item {
     void setUsageStrategy(ItemUsageStrategy usageStrategy);
     void display();
     Item clone(); // Prototype Pattern Declaration end - week 2
+    
 }

@@ -55,6 +55,14 @@ public class Character implements Entity {
     public double getDamage() {
         return damage;
     }
+    public void setDamage(double damage) {
+        this.damage = damage;
+    }
+
+    public void display() {
+        System.out.println("Damage: " + this.damage);
+        System.out.println("Health: " + this.health);
+    }
 
     public void attack(Enemy enemy) {
         enemy.takeDamage(this.damage);

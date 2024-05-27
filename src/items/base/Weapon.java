@@ -51,12 +51,8 @@ public class Weapon implements Item {
 
     @Override
     public void display() {
-        System.out.println("=======");
-        System.out.println("Name: " + this.name);
-        System.out.println("WEAPON ITEM");
-        System.out.println("-------");
+        System.out.println("Weapon name: " + this.name);
         System.out.println("Damage: " + this.damage);
-        System.out.println("=======");
     }
 
     public String getName() {
