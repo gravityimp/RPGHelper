@@ -18,7 +18,7 @@ public aspect CharacterSpriteMoveAspect {
             if (sprite.getY() + y < BOARD_MIN_HEIGHT || sprite.getY() + y > BOARD_MAX_HEIGHT)
                 return false;
 
-            return proceed();
+            return proceed(x, y, sprite);
         }
 
         after(int x, int y, CharacterSprite sprite) : callMove(x, y, sprite) {
