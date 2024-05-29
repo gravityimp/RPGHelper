@@ -13,7 +13,7 @@ public abstract class LevelingSystem {
 
     protected abstract void gainExperiencePoints(Character character, int experiencePoints);
 
-    protected abstract boolean canLevelUp(Character character);
+    public abstract boolean canLevelUp(Character character);
 
     protected abstract void levelUpCharacter(Character character);
 

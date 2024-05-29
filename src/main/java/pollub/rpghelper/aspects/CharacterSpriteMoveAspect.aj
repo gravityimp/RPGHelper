@@ -4,7 +4,7 @@ import pollub.rpghelper.board.CharacterSprite;
 
 import static pollub.rpghelper.board.BoardConstants.*;
 
-public aspect CharacterSpriteAspect {
+public aspect CharacterSpriteMoveAspect {
     pointcut callMove(int x, int y, CharacterSprite sprite) :
                 call(* CharacterSprite.move(int, int)) && args(x, y) && target(sprite);
 
@@ -15,12 +15,12 @@ public aspect CharacterSpriteAspect {
                 callMove(x, y, sprite) {
             if (sprite.getX() + x < BOARD_MIN_WIDTH || sprite.getX() + x > BOARD_MAX_WIDTH)
                 return false;
-            if (sprite.getY() + y < BOARD_MIN_HEIGHT && sprite.getY() + y > BOARD_MAX_HEIGHT)
+            if (sprite.getY() + y < BOARD_MIN_HEIGHT || sprite.getY() + y > BOARD_MAX_HEIGHT)
                 return false;
-            return proceed(x, y, sprite);
+
+            return proceed();
         }
 
         after(int x, int y, CharacterSprite sprite) : callMove(x, y, sprite) {
         }
     }
-}

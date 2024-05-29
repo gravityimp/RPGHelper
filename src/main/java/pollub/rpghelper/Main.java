@@ -172,16 +172,30 @@ public class Main {
                 (new ItemData.ItemDataBuilder()).name("test").armor(2).health(3).damage(7).build()
         );
         equipWeapon.updateCharacter(modifiedCharacter, modifyingWeapon);
-
-        System.out.println("============");
         System.out.println("Modified character:");
         modifiedCharacter.display();
 
         // AspectJ
-        CharacterSprite charSprite2 = new CharacterSprite(0, 0, 0, "images/char1.png", myCharacter);
-        System.out.println("Character position: " + charSprite2.getX() + ", " + charSprite2.getY());
-        
-        charSprite2.move(-1, -2);
-        System.out.println("Character position: " + charSprite2.getX() + ", " + charSprite2.getY());
+        System.out.println("============");
+        CharacterSprite aspectCharacter = new CharacterSprite(0, 0, 0, "images/char1.png", myCharacter);
+        System.out.println("Character position: " + aspectCharacter.getX() + ", " + aspectCharacter.getY());
+
+        aspectCharacter.move(-1, -2);
+        System.out.println("Character position: " + aspectCharacter.getX() + ", " + aspectCharacter.getY());
+        System.out.println("============");
+
+        EnemySprite aspectEnemy = new EnemySprite(1, 99, 99, "images/guard.png", myEnemy);
+        System.out.println("Enemy position: " + aspectEnemy.getX() + ", " + aspectEnemy.getY());
+        aspectEnemy.move(2, 1);
+
+        System.out.println("Enemy position: " + aspectEnemy.getX() + ", " + aspectEnemy.getY());
+        System.out.println("============");
+
+        ItemData iData = (new ItemData.ItemDataBuilder()).name("test").armor(2).health(3).damage(7).build();
+        ArmorSprite aspectItem = new ArmorSprite(2, 1, 2, "images/chestplate.png", new Armor(iData));
+        System.out.println("Item position: " + aspectItem.getX() + ", " + aspectItem.getY());
+
+        aspectItem.move(-1, -2);
+        System.out.println("Item position: " + aspectItem.getX() + ", " + aspectItem.getY());
     }
 }

@@ -12,7 +12,7 @@ public class SimpleLevelingSystem extends LevelingSystem {
     }
 
     @Override
-    protected boolean canLevelUp(Character character) {
+    public boolean canLevelUp(Character character) {
         return character.getExperiencePoints() >= getRequiredExperience(character);
     }
 

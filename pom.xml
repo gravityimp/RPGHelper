@@ -16,16 +16,12 @@
     </properties>
 
     <dependencies>
-        <!-- ... -->
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjrt</artifactId>
-            <!-- AspectJ runtime version, in sync with compiler -->
             <version>${aspectj.version}</version>
         </dependency>
-        <!-- ... -->
     </dependencies>
-    <!-- ... -->
     <build>
         <plugins>
             <plugin>
@@ -36,17 +32,13 @@
                     <dependency>
                         <groupId>org.aspectj</groupId>
                         <artifactId>aspectjtools</artifactId>
-                        <!-- AspectJ compiler version, in sync with runtime -->
                         <version>${aspectj.version}</version>
                     </dependency>
                 </dependencies>
                 <configuration>
-                    <!-- Your favourite Java source/target version -->
                     <complianceLevel>21</complianceLevel>
                 </configuration>
             </plugin>
-            <!-- ... -->
         </plugins>
     </build>
-    <!-- ... -->
 </project>

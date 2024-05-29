@@ -26,12 +26,6 @@ public class EnemySprite implements Sprite {
 
     @Override
     public boolean move(int x, int y) {
-        if (this.x + x < BOARD_MIN_WIDTH || this.x + x > BOARD_MAX_WIDTH)
-            return false;
-
-        if (this.y + y < BOARD_MIN_HEIGHT || this.y + y > BOARD_MAX_HEIGHT)
-            return false;
-
         this.x += x;
         this.y += y;
 
