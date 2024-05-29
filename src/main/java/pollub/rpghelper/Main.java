@@ -176,5 +176,12 @@ public class Main {
         System.out.println("============");
         System.out.println("Modified character:");
         modifiedCharacter.display();
+
+        // AspectJ
+        CharacterSprite charSprite2 = new CharacterSprite(0, 0, 0, "images/char1.png", myCharacter);
+        System.out.println("Character position: " + charSprite2.getX() + ", " + charSprite2.getY());
+        
+        charSprite2.move(-1, -2);
+        System.out.println("Character position: " + charSprite2.getX() + ", " + charSprite2.getY());
     }
 }
