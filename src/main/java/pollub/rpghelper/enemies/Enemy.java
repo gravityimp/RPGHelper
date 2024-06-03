@@ -1,9 +1,9 @@
 package pollub.rpghelper.enemies;
 
 import pollub.rpghelper.adapters.Entity;
-import pollub.rpghelper.obrservers.enemies.EnemyCreatedLogListener;
-import pollub.rpghelper.obrservers.EventManager;
-import pollub.rpghelper.obrservers.enemies.EnemyHitLogListener;
+import pollub.rpghelper.observers.enemies.EnemyCreatedLogListener;
+import pollub.rpghelper.observers.EventManager;
+import pollub.rpghelper.observers.enemies.EnemyHitLogListener;
 
 import java.io.File;
 

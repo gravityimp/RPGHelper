@@ -1,4 +1,4 @@
-package pollub.rpghelper.obrservers;
+package pollub.rpghelper.observers;
 
 import java.util.ArrayList;
 import java.util.HashMap;

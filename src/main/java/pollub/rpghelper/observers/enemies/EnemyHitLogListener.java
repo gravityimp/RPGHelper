@@ -1,7 +1,7 @@
-package pollub.rpghelper.obrservers.enemies;
+package pollub.rpghelper.observers.enemies;
 
 import pollub.rpghelper.enemies.Enemy;
-import pollub.rpghelper.obrservers.EventListener;
+import pollub.rpghelper.observers.EventListener;
 
 import java.io.File;
 
