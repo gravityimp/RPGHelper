@@ -33,13 +33,19 @@ public class QuestTest {
     }
 
     @Test
-    public void testQuestStateTransition() {
+    public void testAbandonQuestStateTransition() {
         quest.start();
         assertEquals(InProgressState.class, quest.getState().getClass());
 
         quest.abandon();
         assertEquals(NotTakenState.class, quest.getState().getClass());
 
+        quest.start();
+        assertEquals(InProgressState.class, quest.getState().getClass());
+    }
+
+    @Test
+    public void testCompleteQuestStateTransition() {
         quest.start();
         assertEquals(InProgressState.class, quest.getState().getClass());
 
