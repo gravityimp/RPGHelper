@@ -18,13 +18,11 @@ public class NotTakenState extends QuestState {
 
     @Override
     public String onComplete() {
-        System.out.println("Quest '" + getQuest().getName() + "' cannot be completed because it has not been started.");
-        return "";
+        throw new IllegalStateException("Quest '" + getQuest().getName() + "' cannot be completed because it has not been started.");
     }
 
     @Override
     public String onAbandon() {
-        System.out.println("Quest '" + getQuest().getName() + "' cannot be abandoned because it has not been started.");
-        return "";
+        throw new IllegalStateException("Quest '" + getQuest().getName() + "' cannot be abandoned because it has not been started.");
     }
 }

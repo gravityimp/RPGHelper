@@ -11,13 +11,13 @@ public class InProgressState extends QuestState {
 
     @Override
     public String onStart() {
-        System.out.println("Quest '" + getQuest().getName()  + "' is already in progress.");
-        return "";
+        throw new IllegalStateException("Quest '" + getQuest().getName()  + "' is already in progress.");
     }
 
     @Override
     public String onComplete() {
-        System.out.println("Quest '" + getQuest().getName()  + "' cannot be completed while in progress.");
+        System.out.println("Quest '" + getQuest().getName()  + "' has been completed.");
+        getQuest().setState(new CompletedState(getQuest()));
         return "";
     }
 

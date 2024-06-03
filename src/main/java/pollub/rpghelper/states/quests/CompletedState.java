@@ -17,13 +17,11 @@ public class CompletedState extends QuestState {
 
     @Override
     public String onComplete() {
-        System.out.println("Quest '" + getQuest().getName() + "' has already been completed.");
-        return "";
+        throw new IllegalStateException("Quest '" + getQuest().getName() + "' has already been completed.");
     }
 
     @Override
     public String onAbandon() {
-        System.out.println("Quest '" + getQuest().getName() + "' has already been completed and cannot be abandoned.");
-        return "";
+        throw new IllegalStateException("Quest '" + getQuest().getName() + "' has already been completed and cannot be started again.");
     }
 }
