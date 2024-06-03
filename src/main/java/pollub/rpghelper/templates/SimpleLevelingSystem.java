@@ -25,7 +25,7 @@ public class SimpleLevelingSystem extends LevelingSystem {
     }
 
     @Override
-    protected int getRequiredExperience(Character character) {
+    public int getRequiredExperience(Character character) {
         return 20 + (character.getLevel() * 24);
     }
 

@@ -17,5 +17,7 @@ public abstract class LevelingSystem {
 
     protected abstract void levelUpCharacter(Character character);
 
-    protected abstract int getRequiredExperience(Character character);
+    public abstract int getRequiredExperience(Character character);
+
+    public abstract void setLevelUpBonus(int levelUpBonus);
 }

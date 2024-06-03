@@ -18,6 +18,10 @@ public class Party {
         members.add(member);
     }
 
+    public List<Character> getMembers() {
+        return members;
+    }
+
     public double getHealth() {
         double health = 0.0;
         for(Character c: members) health += c.getHealth();
