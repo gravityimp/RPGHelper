@@ -18,6 +18,7 @@ import pollub.rpghelper.interpreters.AndExpression;
 import pollub.rpghelper.interpreters.RollExpression;
 import pollub.rpghelper.interpreters.RollInterpreter;
 import pollub.rpghelper.items.ItemData;
+import pollub.rpghelper.items.ItemFacade;
 import pollub.rpghelper.items.base.Armor;
 import pollub.rpghelper.items.base.Weapon;
 import pollub.rpghelper.iterators.HumanEnemyIterator;
@@ -115,8 +116,8 @@ public class Main {
         enemySprite.move(-2, -1);
 
         ItemData i = (new ItemData.ItemDataBuilder()).name("test").armor(2).health(3).damage(7).build();
-        ArmorSprite armorSprite = new ArmorSprite(2, 1, 2, "images/chestplate.png", new Armor(i));
-        WeaponSprite weaponSprite = new WeaponSprite(3, 1, 2, "images/sword.png", new Weapon(i));
+        ArmorSprite armorSprite = new ArmorSprite(2, 1, 2, "images/chestplate.png", (Armor)ItemFacade.createArmor(i));
+        WeaponSprite weaponSprite = new WeaponSprite(3, 1, 2, "images/sword.png", (Weapon)ItemFacade.createWeapon(i));
 
         XMLExportVisitor exportVisitor = new XMLExportVisitor();
         System.out.println(exportVisitor.export(charSprite, enemySprite, armorSprite, weaponSprite));
@@ -128,7 +129,7 @@ public class Main {
                     .name("Armor " + RANDOM.nextInt(100))
                     .armor(RANDOM.nextDouble() * 30)
                     .build();
-            return new Armor(itemData);
+            return (Armor)ItemFacade.createArmor(itemData);
         };
 
         RandomItemGenerator<Weapon> weaponGenerator = () -> {
@@ -137,7 +138,7 @@ public class Main {
                     .name("Weapon " + RANDOM.nextInt(100))
                     .damage(RANDOM.nextDouble() * 50)
                     .build();
-            return new Weapon(itemData);
+            return (Weapon)ItemFacade.createWeapon(itemData);
         };
 
         Map<String, Armor> armorMap = new HashMap<>();
@@ -168,7 +169,7 @@ public class Main {
             target.setDamage(newDamage);
         };
 
-        Weapon modifyingWeapon = new Weapon(
+        Weapon modifyingWeapon = (Weapon)ItemFacade.createWeapon(
                 (new ItemData.ItemDataBuilder()).name("test").armor(2).health(3).damage(7).build()
         );
         equipWeapon.updateCharacter(modifiedCharacter, modifyingWeapon);
