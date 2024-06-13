@@ -18,7 +18,7 @@ public class XMLExportVisitor implements Visitor {
 
     public String visitCharacter(CharacterSprite c) {
         Character character = c.getCharacter();
-        return "<pollub.rpghelper.character>" + "\n" +
+        return "<character>" + "\n" +
                 "    <id>" + c.getId() + "</id>" + "\n" +
                 "    <x>" + c.getX() + "</x>" + "\n" +
                 "    <y>" + c.getY() + "</y>" + "\n" +
@@ -26,7 +26,7 @@ public class XMLExportVisitor implements Visitor {
                 "    <class>" + character.getCharacterClass() + "</class>" + "\n" +
                 "    <health>" + character.getHealth() + "</health>" + "\n" +
                 "    <damage>" + character.getDamage() + "</damage>" + "\n" +
-                "</pollub.rpghelper.character>";
+                "</character>";
     }
 
     public String visitEnemy(EnemySprite e) {
